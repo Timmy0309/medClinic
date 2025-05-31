@@ -3,7 +3,7 @@ import { appointmentsApi } from '../../api/appointmentsApi';
 import type { RootState } from '../index';
 import { Appointment, NewAppointment } from '../../types/appointments';
 
-interface AppointmentsState {
+export interface AppointmentsState {
   appointments: Appointment[];
   availableSlots: { date: string; time: string }[];
   loading: boolean;

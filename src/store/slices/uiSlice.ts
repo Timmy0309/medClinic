@@ -21,6 +21,11 @@ const initialState: UiState = {
 
 let nextNotificationId = 0;
 
+// Функция для сброса счетчика (только для тестов)
+export const resetNotificationCounter = () => {
+  nextNotificationId = 0;
+};
+
 const uiSlice = createSlice({
   name: 'ui',
   initialState,

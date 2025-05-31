@@ -2,9 +2,9 @@ import authReducer, {
   clearError,
   login,
   logout,
-} from './authSlice';
-import type { AuthState } from './authSlice';
-import { User } from '../../types/auth';
+} from '../authSlice';
+import type { AuthState } from '../authSlice';
+import { User } from '../../../types/auth';
 
 // Мокаем localStorage
 beforeEach(() => {
