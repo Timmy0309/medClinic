@@ -8,7 +8,9 @@
     "build": "webpack --mode production",
     "lint": "eslint .",
     "test": "jest",
-     "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.1",
@@ -40,6 +42,7 @@
     "eslint": "^9.9.1",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.11",
+    "gh-pages": "^6.3.0",
     "html-webpack-plugin": "^5.6.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^30.0.0-beta.3",
@@ -57,5 +60,6 @@
     "webpack": "^5.90.3",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.2"
-  }
+  },
+  "homepage": "https://Timmy0309.github.io/medClinic"
 }
