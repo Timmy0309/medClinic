@@ -53,7 +53,7 @@ const AboutSection: React.FC = () => {
           
           <div className="relative">
             <img
-              src="https://images.pexels.com/photos/4021775/pexels-photo-4021775.jpeg"
+              src="https://medvestnik.ru/apps/mv/assets/files/content/news/978/97886/front.jpg"
               alt="Врачи нашей клиники"
               className="rounded-lg shadow-lg z-10 relative"
             />

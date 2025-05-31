@@ -41,8 +41,8 @@ const HeroSection: React.FC = () => {
           
           <div className="order-1 md:order-2">
             <img
-              src="https://images.pexels.com/photos/7088486/pexels-photo-7088486.jpeg"
-              alt="Врач осматривает пациента"
+              src="https://demosoledad.pencidesign.net/soledad-hospital-multipurpose/wp-content/uploads/sites/55/2019/12/8.jpg"
+              alt="Команда врачей"
               className="rounded-lg shadow-xl w-full h-auto"
             />
           </div>
