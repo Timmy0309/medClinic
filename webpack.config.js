@@ -13,7 +13,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
     clean: true,
-    publicPath: '/',
+    publicPath: '/medClinic/',
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx'],

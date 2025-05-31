@@ -28,7 +28,6 @@ describe('Authentication Tests', () => {
     cy.get('[data-testid="phone-input"]').should('be.visible');
   });
 
-  // Test successful login flow
   it('should login successfully with valid credentials', () => {
     const testUser = {
       email: 'test@example.com',
@@ -39,7 +38,6 @@ describe('Authentication Tests', () => {
     cy.get('[data-testid="password-input"]').type(testUser.password);
     cy.get('[data-testid="login-form"]').submit();
     
-    // After successful login, we should be redirected to home
     cy.url().should('eq', Cypress.config().baseUrl + 'profile');
   });
 });

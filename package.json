@@ -1,5 +1,5 @@
 {
-  "name": "medical-clinic-app",
+  "name": "medClinic",
   "private": true,
   "version": "0.1.0",
   "scripts": {
@@ -10,7 +10,7 @@
     "test": "jest",
     "cypress:open": "cypress open",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.1",
@@ -61,5 +61,5 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.2"
   },
-  "homepage": "https://Timmy0309.github.io/medClinic"
+  "homepage": "https://timmy0309.github.io/medClinic/"
 }
