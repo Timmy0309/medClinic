@@ -100,7 +100,7 @@ const RegisterForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4" data-testid="register-form">
       {apiError && <Alert type="error" message={apiError} />}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -116,6 +116,7 @@ const RegisterForm: React.FC = () => {
             onChange={handleChange}
             error={errors.firstName}
             required
+            data-testid="firstName-input"
           />
         </div>
 
@@ -131,6 +132,7 @@ const RegisterForm: React.FC = () => {
             onChange={handleChange}
             error={errors.lastName}
             required
+            data-testid="lastName-input"
           />
         </div>
       </div>
@@ -148,6 +150,7 @@ const RegisterForm: React.FC = () => {
           onChange={handleChange}
           error={errors.email}
           required
+          data-testid="email-input"
         />
       </div>
 
@@ -164,6 +167,7 @@ const RegisterForm: React.FC = () => {
           placeholder="+7 (999) 123-45-67"
           error={errors.phone}
           required
+          data-testid="phone-input"
         />
       </div>
 
@@ -180,6 +184,7 @@ const RegisterForm: React.FC = () => {
           onChange={handleChange}
           error={errors.password}
           required
+          data-testid="password-input"
         />
       </div>
 
@@ -196,16 +201,17 @@ const RegisterForm: React.FC = () => {
           onChange={handleChange}
           error={errors.confirmPassword}
           required
+          data-testid="confirmPassword-input"
         />
       </div>
 
-      <Button type="submit" className="w-full" loading={isLoading}>
+      <Button type="submit" className="w-full" loading={isLoading} data-testid="submit-button">
         Зарегистрироваться
       </Button>
 
       <p className="text-center text-sm text-neutral-600 mt-4">
         Уже есть аккаунт?{' '}
-        <Link to="/login" className="text-primary-600 hover:text-primary-700 font-medium">
+        <Link to="/login" className="text-primary-600 hover:text-primary-700 font-medium" data-testid="login-link">
           Войти
         </Link>
       </p>

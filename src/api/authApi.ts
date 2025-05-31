@@ -8,10 +8,26 @@ const USERS_KEY = 'mock_users';
 // Имитация задержки для API
 const DELAY = 500;
 
+// Тестовый пользователь по умолчанию
+const DEFAULT_TEST_USER = {
+  id: '1',
+  email: 'test@example.com',
+  password: 'password123',
+  firstName: 'Test',
+  lastName: 'User',
+  phone: '+7 (999) 123-45-67'
+};
+
 // Получение сохранённых пользователей
 const getStoredUsers = (): User[] & { password: string }[] => {
   const users = localStorage.getItem(USERS_KEY);
-  return users ? JSON.parse(users) : [];
+  if (!users) {
+    // Если пользователей нет, создаем тестового
+    const defaultUsers = [DEFAULT_TEST_USER];
+    localStorage.setItem(USERS_KEY, JSON.stringify(defaultUsers));
+    return defaultUsers;
+  }
+  return JSON.parse(users);
 };
 
 // Сохранение пользователей

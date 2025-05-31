@@ -34,7 +34,7 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4" data-testid="login-form">
       {error && <Alert type="error" message={error} />}
 
       <div>
@@ -48,6 +48,7 @@ const LoginForm: React.FC = () => {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="example@mail.ru"
           required
+          data-testid="email-input"
         />
       </div>
 
@@ -62,16 +63,17 @@ const LoginForm: React.FC = () => {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Введите пароль"
           required
+          data-testid="password-input"
         />
       </div>
 
-      <Button type="submit" className="w-full" loading={isLoading}>
+      <Button type="submit" className="w-full" loading={isLoading} data-testid="submit-button">
         Войти
       </Button>
 
       <p className="text-center text-sm text-neutral-600 mt-4">
         Еще нет аккаунта?{' '}
-        <Link to="/register" className="text-primary-600 hover:text-primary-700 font-medium">
+        <Link to="/register" className="text-primary-600 hover:text-primary-700 font-medium" data-testid="register-link">
           Зарегистрироваться
         </Link>
       </p>

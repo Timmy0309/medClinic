@@ -87,7 +87,7 @@ const ServiceDetailsPage: React.FC = () => {
             />
           )}
           
-          <div className="card p-6 mb-6">
+          <div className="card p-6 mb-6" data-testid="service-description">
             <h2 className="text-xl font-bold mb-4">Описание услуги</h2>
             <p className="text-neutral-700 whitespace-pre-line">{service.description}</p>
           </div>
@@ -102,7 +102,7 @@ const ServiceDetailsPage: React.FC = () => {
         </div>
         
         <div>
-          <div className="card p-6 mb-6 sticky top-4">
+          <div className="card p-6 mb-6 sticky top-4" data-testid="service-details">
             <h2 className="text-xl font-bold mb-4">Информация</h2>
             
             <div className="space-y-4 mb-6">
@@ -124,7 +124,7 @@ const ServiceDetailsPage: React.FC = () => {
               
               <div>
                 <p className="text-sm font-medium mb-1">Стоимость</p>
-                <p className="text-2xl font-bold text-primary-600">
+                <p className="text-2xl font-bold text-primary-600" data-testid="service-price">
                   {service.price.toLocaleString('ru-RU')} ₽
                 </p>
               </div>

@@ -13,6 +13,7 @@ import Spinner from '../components/ui/Spinner';
 import Alert from '../components/ui/Alert';
 import Button from '../components/ui/Button';
 import { parseISO, isBefore } from 'date-fns';
+import { Appointment } from '../types/appointments';
 
 const AppointmentsPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -31,8 +32,8 @@ const AppointmentsPage: React.FC = () => {
   const now = new Date();
   
   // Сортируем и фильтруем записи
-  const sortAppointments = (appointments: typeof appointments) => {
-    return [...appointments].sort((a, b) => {
+  const sortAppointments = (appointmentsList: Appointment[]) => {
+    return [...appointmentsList].sort((a, b) => {
       const dateA = parseISO(`${a.date}T${a.time}`);
       const dateB = parseISO(`${b.date}T${b.time}`);
       return dateB.getTime() - dateA.getTime();
@@ -70,7 +71,7 @@ const AppointmentsPage: React.FC = () => {
         </p>
       </div>
       
-      {error && <Alert type="error" message={error} className="mb-6" />}
+      {error && <Alert type="error" message={error} />}
       
       <div className="mb-8">
         <h2 className="text-xl font-bold mb-4 flex items-center">

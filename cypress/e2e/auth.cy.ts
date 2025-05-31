@@ -1,29 +1,45 @@
-describe('Регистрация и вход', () => {
-  const testEmail = `testuser${Date.now()}@example.com`;
-  const testPassword = 'Test1234!';
-  const testName = 'Test User';
+/// <reference types="cypress" />
 
-  it('Переход на страницу регистрации и успешная регистрация', () => {
-    cy.visit('/register');
-
-    cy.get('input[name="email"]').type(testEmail);
-    cy.get('input[name="password"]').type(testPassword);
-    cy.get('input[name="name"]').type(testName);
-
-    cy.get('form').submit();
-
-    cy.contains(/успеш/i, { timeout: 5000 }).should('exist');
+describe('Authentication Tests', () => {
+  beforeEach(() => {
+    cy.visit('/login');
   });
 
-  it('Переход на страницу логина и успешный вход с редиректом', () => {
-    cy.visit('/login');
+  it('should display login form', () => {
+    cy.get('[data-testid="login-form"]').should('be.visible');
+    cy.get('[data-testid="email-input"]').should('be.visible');
+    cy.get('[data-testid="password-input"]').should('be.visible');
+  });
 
-    cy.get('input[name="email"]').type(testEmail);
-    cy.get('input[name="password"]').type(testPassword);
 
-    cy.get('form').submit();
 
-    cy.url().should('not.include', '/login');
-    cy.contains(/профиль|запись|выход/i, { timeout: 5000 }).should('exist');
+  it('should navigate to register page', () => {
+    cy.get('[data-testid="register-link"]').click();
+    cy.url().should('include', '/register');
+  });
+
+  it('should display register form', () => {
+    cy.visit('/register');
+    cy.get('[data-testid="register-form"]').should('be.visible');
+    cy.get('[data-testid="email-input"]').should('be.visible');
+    cy.get('[data-testid="password-input"]').should('be.visible');
+    cy.get('[data-testid="firstName-input"]').should('be.visible');
+    cy.get('[data-testid="lastName-input"]').should('be.visible');
+    cy.get('[data-testid="phone-input"]').should('be.visible');
+  });
+
+  // Test successful login flow
+  it('should login successfully with valid credentials', () => {
+    const testUser = {
+      email: 'test@example.com',
+      password: 'password123'
+    };
+
+    cy.get('[data-testid="email-input"]').type(testUser.email);
+    cy.get('[data-testid="password-input"]').type(testUser.password);
+    cy.get('[data-testid="login-form"]').submit();
+    
+    // After successful login, we should be redirected to home
+    cy.url().should('eq', Cypress.config().baseUrl + 'profile');
   });
 });

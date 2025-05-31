@@ -29,6 +29,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
     <Link
       to={`/services/${service.id}`}
       className="block card overflow-hidden transition-shadow hover:shadow-md"
+      data-testid="service-card"
     >
       {service.image && (
         <img
