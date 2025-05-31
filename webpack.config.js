@@ -4,10 +4,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const webpack = require('webpack');
 
-const isDevelopment = process.env.NODE_ENV !== 'production';
+const isDevelopment = process.env.NODE_ENV === 'development';
 
 module.exports = {
+  mode: isDevelopment ? 'development' : 'production',
   entry: './src/main.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -57,16 +59,20 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './index.html',
     }),
-    !isDevelopment && new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
-    }),
+    !isDevelopment &&
+      new MiniCssExtractPlugin({
+        filename: '[name].[contenthash].css',
+      }),
     isDevelopment && new ReactRefreshWebpackPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(
+        isDevelopment ? 'development' : 'production'
+      ),
+    }),
   ].filter(Boolean),
   optimization: {
-    minimizer: [
-      new TerserPlugin(),
-      new CssMinimizerPlugin(),
-    ],
+    minimize: !isDevelopment,
+    minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
     splitChunks: {
       chunks: 'all',
     },
