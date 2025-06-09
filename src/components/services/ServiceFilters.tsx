@@ -30,6 +30,14 @@ const ServiceFilters: React.FC = () => {
   const handlePriceRangeChange = (min: number, max: number) => {
     dispatch(setFilter({ priceRange: { min, max } }));
   };
+
+    
+  const handlePriceInputFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    const isMinPrice = e.target.id === 'min-price';
+    if ((isMinPrice && filters.priceRange.min === 0) || (!isMinPrice && filters.priceRange.max === 50000)) {
+      e.target.value = '';
+    }
+  };
   
   const handleResetFilters = () => {
     dispatch(resetFilters());
@@ -104,6 +112,7 @@ const ServiceFilters: React.FC = () => {
               onChange={(e) =>
                 handlePriceRangeChange(Number(e.target.value), filters.priceRange.max)
               }
+              onFocus={handlePriceInputFocus}
             />
           </div>
           <div>
@@ -120,6 +129,7 @@ const ServiceFilters: React.FC = () => {
               onChange={(e) =>
                 handlePriceRangeChange(filters.priceRange.min, Number(e.target.value))
               }
+              onFocus={handlePriceInputFocus}
             />
           </div>
         </div>

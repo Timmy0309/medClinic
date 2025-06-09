@@ -60,7 +60,7 @@ module.exports = (env, argv) => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './index.html',
+        template: './public/index.html',
       }),
       !isDevelopment &&
         new MiniCssExtractPlugin({
